@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "myproject-6ebff": {
+      "hosting": {
+        "CRUD-Mercader": [
+          "myproject-6ebff"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myproject-6ebff"
+  }
+}

@@ -1,0 +1,57 @@
+<div class="width-form" mat-dialog-content>
+  <form [formGroup]="formClothing" (ngSubmit)="submit()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput type="text" autocomplete="off" AlphaNumeric>
+        <mat-error *ngIf="formClothing.controls['name'].invalid">Name is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea formControlName="description" matInput type="text" autocomplete="off"> </textarea>
+        <mat-error *ngIf="formClothing.controls['description'].invalid">Description is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>SKU</mat-label>
+        <input formControlName="SKU" matInput type="text" autocomplete="off" numbersOnly>
+        <mat-error *ngIf="formClothing.controls['SKU'].hasError('required')">SKU is required</mat-error>
+        <mat-error *ngIf="formClothing.controls['SKU'].hasError('skuExists')"> SKU already exist in Database </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Sale Price</mat-label>
+        <input formControlName="salePrice" matInput type="text" autocomplete="off" type="text" DecimalNumber>
+        <mat-error *ngIf="formClothing.controls['salePrice'].invalid">Sale Price is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Offer Price</mat-label>
+        <input formControlName="offerPrice" matInput type="text" autocomplete="off" DecimalNumber>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Offer Date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker" formControlName="offerEndDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="row width-btn">
+      <div class="col-12">
+        <button mat-stroked-button type="submit">Save</button>
+      </div>
+    </div>
+  </form>
+  <div style="padding-top: 0.5rem">
+    <button mat-stroked-button (click)="onNoClick()" style="width: 100%">Cancel</button>
+  </div>
+</div>
+
+

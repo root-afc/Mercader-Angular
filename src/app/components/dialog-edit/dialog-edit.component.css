@@ -1,0 +1,7 @@
+.width-btn > div > button {
+  width: 100%;
+}
+
+.width-form > form > div > mat-form-field {
+  width: 100%;
+}

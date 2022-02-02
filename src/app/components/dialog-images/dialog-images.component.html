@@ -1,0 +1,8 @@
+<div mat-dialog-content>
+  <div *ngFor="let i of data.images">
+    <img class="img-fluid img-thumbnail" [src]="i">
+  </div>
+</div>
+<div mat-dialog-actions style="display: flex;justify-content: center">
+  <button mat-stroked-button (click)="onNoClick()">Close</button>
+</div>

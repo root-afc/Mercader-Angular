@@ -1,0 +1,76 @@
+<mat-toolbar color="primary">
+  <mat-icon>local_fire_department</mat-icon>
+  <span>Alvaro Fiestas</span>
+</mat-toolbar>
+
+<div class="rightButton">
+  <button mat-fab color="accent" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<div style="overflow: auto">
+  <div class="row">
+    <div class="col-12">
+      <table class="table shadow">
+        <thead>
+          <tr>
+            <!--    <th scope="col">Key</th>-->
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">SKU</th>
+            <th scope="col">Sale Price</th>
+            <th scope="col">Offer Price</th>
+            <th scope="col">Offer End Date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of DATA">
+            <!--    <th scope="row">{{i.key}}</th>-->
+            <td *ngIf="i.images; else elseBlockImage" class="w-25" scope="row">
+              <img
+                matTooltip="Click to preview all images."
+                class="img-fluid img-thumbnail"
+                [src]="i.images[0]"
+                (click)="imagesDialog(i)"
+              />
+            </td>
+            <ng-template #elseBlockImage>
+              <th>-</th>
+            </ng-template>
+            <td>{{ i.name }}</td>
+            <td style="word-break: break-all">{{ i.description }}</td>
+            <td>{{ i.SKU }}</td>
+            <td>{{ i.salePrice }}</td>
+            <td *ngIf="i.offerPrice; else elseBlockOfferPrice">
+              {{ i.offerPrice }}
+            </td>
+            <ng-template #elseBlockOfferPrice>
+              <td>-</td>
+            </ng-template>
+            <td *ngIf="validDate(i); else elseBlockEndDate">
+              {{ i.offerEndDate | date: "dd/MM/yyyy" }}
+            </td>
+            <ng-template #elseBlockEndDate>
+              <td>-</td>
+            </ng-template>
+            <td>
+              <button mat-mini-fab color="accent" (click)="editDialog(i)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="delete(i.key)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+          <tr></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

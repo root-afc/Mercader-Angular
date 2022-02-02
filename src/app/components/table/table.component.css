@@ -1,0 +1,31 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.rightButton {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+th {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+td {
+  vertical-align: middle;
+}
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
